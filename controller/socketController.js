@@ -47,19 +47,9 @@ exports.chat = (http) => {
     socket.on("chatMessage", (msg, callback) => {
       const user = getCurrentUser(socket.id);
       io.to(user.room).emit("message", formatMessage(user.username, msg));
-
-      // let chatMessage = new ChatModel({
-      //   message: msg,
-      //   sender: user.username,
-      //   time: user.time,
-      //   room: user.room
-      // })
-
-      // chatMessage.save();
       callback();
     });
 
-    // socket.on('e')
   });
 };
 
